@@ -18,7 +18,7 @@ export function AlertDialogPattern({ _id }: { _id: string }) {
   const router = useRouter();
   const OnClickDeletePattern = () => {
     deletePattern(_id);
-    router.push("/patterns");
+    router.push("/pattern");
   };
   return (
     <AlertDialog>

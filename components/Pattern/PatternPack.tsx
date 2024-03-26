@@ -11,7 +11,7 @@ const PatternPack: FC = async () => {
   const patterns: dayTypeWithId[] | undefined = await getPatterns(userId);
   if (patterns?.length === 0) {
     return (
-      <section className=" flex justify-center items-center rounded-xl p-2 bg-white">
+      <section className=" xl:w-1/2 w-full xl:mr-2 mr-0 xl:mb-0 mb-2 flex justify-center items-center rounded-xl p-2 bg-white">
         <Image src={"/4.jpg"} alt="" width={500} height={500} />
       </section>
     );

@@ -17,8 +17,8 @@ const SinglePatternPage: FC<{
     return (
       <>
         <article className=" xl:flex mt-2">
-          <section className=" mb-2 xl:mb-2 bg-white rounded-xl xl:w-1/2 w-full xl:mr-2 p-2 flex flex-col justify-between">
-            <div>
+          <section className=" mb-2 xl:mb-0 bg-white rounded-xl xl:w-1/2 w-full xl:mr-2 p-2 flex flex-col justify-between">
+            <div className=" h-full">
               <header className=" flex justify-between items-center mb-2">
                 <h1 className=" text-xl font-bold">{pattern.dayName}</h1>
                 <div className=" flex">
