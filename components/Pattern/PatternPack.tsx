@@ -1,13 +1,20 @@
 import { categoryType, dayTypeWithId } from "@/Types/DayType";
 import { monthsAndYears } from "@/constants";
 import { getPatterns } from "@/lib/data";
+import { auth } from "@clerk/nextjs";
+import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 
 const PatternPack: FC = async () => {
-  const patterns: dayTypeWithId[] | undefined = await getPatterns();
+  const { userId }: { userId: string | null } = auth();
+  const patterns: dayTypeWithId[] | undefined = await getPatterns(userId);
   if (patterns?.length === 0) {
-    return <section>null</section>;
+    return (
+      <section className=" flex justify-center items-center rounded-xl p-2 bg-white">
+        <Image src={"/4.jpg"} alt="" width={500} height={500} />
+      </section>
+    );
   } else {
     return (
       <section className=" bg-white rounded-xl p-2 xl:w-1/2 w-full mr-2 mb-2 xl:mb-2">

@@ -75,44 +75,44 @@ const PatternForm: FC = () => {
   };
   return (
     <>
-      <section className=" flex mt-2">
-        <section className=" w-1/2 bg-white rounded-xl p-2 mr-2">
+      <section className=" xl:flex mt-2">
+        <section className=" mb-2 xl:mb-2 xl:w-1/2 w-full bg-white rounded-xl p-2 mr-2">
           <PatternHeader />
           <PatternName />
           <PatternMonth />
           <PatternCategory />
           <PatternNote />
         </section>
-        <section className=" w-1/2 bg-white rounded-xl p-2 flex flex-col justify-end">
+        <section className=" xl:w-1/2 w-full bg-white rounded-xl p-2 flex flex-col justify-end">
           <PatternEvents />
         </section>
       </section>
-      <section className=" flex mt-2">
+      <section className=" xl:flex grid grid-cols-2 xl:gap-0 gap-2 mt-2">
         <Button
           variant="destructive"
           onClick={() => dispatch(clearValuesPattern())}
-          className="mr-2 w-1/5 "
+          className="mr-2 xl:w-1/5 w-full"
         >
           Clear this Pattern
         </Button>
         <Button
           onClick={() => onClickPastDay()}
           variant="outline"
-          className=" w-2/5 mr-2"
+          className=" xl:w-2/5 w-full  mr-2"
         >
           Paste the copied day
         </Button>
         <Button
           onClick={() => onClickPastPattern()}
           variant="outline"
-          className=" w-2/5 mr-2"
+          className=" xl:w-2/5 w-full mr-2"
         >
           Paste the copied pattern
         </Button>
         <Button
           variant="outline"
           onClick={() => onClickUpdatePattern()}
-          className={` p-2 w-2/5 `}
+          className={` p-2 xl:w-2/5 w-full `}
         >
           Update Pattern
         </Button>

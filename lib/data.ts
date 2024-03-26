@@ -61,10 +61,10 @@ export const getPattern = async (id: string) => {
   }
 };
 
-export const getPatterns = async () => {
+export const getPatterns = async (userOwner: string | null) => {
   try {
     connectToDB();
-    const patterns = await Pattern.find();
+    const patterns = await Pattern.find({ owner: userOwner });
     return patterns;
   } catch (err) {
     console.log(err);

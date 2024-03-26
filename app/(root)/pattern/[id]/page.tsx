@@ -16,8 +16,8 @@ const SinglePatternPage: FC<{
   if (!!pattern) {
     return (
       <>
-        <article className=" flex mt-2">
-          <section className=" bg-white rounded-xl w-1/2 mr-2 p-2 flex flex-col justify-between">
+        <article className=" xl:flex mt-2">
+          <section className=" mb-2 xl:mb-2 bg-white rounded-xl xl:w-1/2 w-full xl:mr-2 p-2 flex flex-col justify-between">
             <div>
               <header className=" flex justify-between items-center mb-2">
                 <h1 className=" text-xl font-bold">{pattern.dayName}</h1>
@@ -39,7 +39,7 @@ const SinglePatternPage: FC<{
               <section
                 className={` ${
                   "bg-" + pattern.color + "-400"
-                } flex justify-center mb-2 p-2 rounded-xl w-1/4 text-white font-bold`}
+                } flex justify-center mb-2 p-2 rounded-xl xl:w-1/4 text-white font-bold`}
               >
                 <p>{monthsAndYears[pattern.monthAndYears - 1]}</p>
               </section>
@@ -79,7 +79,7 @@ const SinglePatternPage: FC<{
               <HoverPlanChecker />
             </section>
           </section>
-          <section className=" bg-white rounded-xl w-1/2 p-2">
+          <section className=" bg-white rounded-xl xl:w-1/2 w-full p-2">
             <h1 className=" font-bold text-lg">Events:</h1>
             <section className=" w-full">
               {pattern.events.map((ev, index) => (
