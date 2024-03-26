@@ -1,12 +1,14 @@
 import { dayTypeWithId } from "@/Types/DayType";
 import { Button } from "@/components/ui/button";
 import { getCalendar } from "@/lib/data";
+import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 
 const CalendarPage: FC = async () => {
-  const days: dayTypeWithId[] | undefined = await getCalendar();
+  const { userId }: { userId: string | null } = auth();
+  const days: dayTypeWithId[] | undefined = await getCalendar(userId);
   if (days?.length === 0) {
     return (
       <section className=" bg-white  mt-2 rounded-xl flex items-center flex-col">
@@ -15,7 +17,7 @@ const CalendarPage: FC = async () => {
         </div>
         <h1 className=" text-xl">You don't have days yet.</h1>
         <Link href={"/day?monthAndYears=1"} className=" my-5">
-          <Button variant={"outline"} className=" w-60">
+          <Button variant={"outline"} className=" xl:w-60 w-full">
             Comeback
           </Button>
         </Link>
@@ -23,7 +25,7 @@ const CalendarPage: FC = async () => {
     );
   } else {
     return (
-      <article className=" bg-white w-full rounded-xl p-2 mt-2 flex flex-wrap">
+      <article className=" bg-white w-full rounded-xl p-2 mt-2 grid xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 grid-cols-1">
         {days?.map((day) => (
           <Link
             href={`/day/${day._id}`}

@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <>
       <article className=" mt-2">
-        <section className="bg-white rounded-xl py-10">
+        <section className="bg-white rounded-xl py-10 px-2">
           <h1 className=" text-2xl font-bold text-center">
             Welcome to the planner website!
           </h1>
@@ -45,7 +45,7 @@ export default function Home() {
             <ImageSwitcher />
           </div>
           <section className=" w-full flex flex-col justify-between">
-            <h1 className=" font-bold text-xl text-center w-full">
+            <h1 className=" font-bold text-xl text-center w-full xl:my-0 my-2">
               Technology stack:
             </h1>
             <section className=" grid xl:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-2 mb-1">

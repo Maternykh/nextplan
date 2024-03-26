@@ -11,7 +11,7 @@ const PatternPack: FC = async () => {
   } else {
     return (
       <section className=" bg-white rounded-xl p-2 xl:w-1/2 w-full mr-2 mb-2 xl:mb-2">
-        <section className="  grid gap-2 xl:grid-cols-3 md:grid-cols-2 grid-cols-1">
+        <section className="  grid gap-2 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
           {patterns?.map((pattern: dayTypeWithId) => (
             <Link
               href={`/pattern/${pattern._id}`}

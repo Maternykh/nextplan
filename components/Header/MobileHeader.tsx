@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { FC, ReactElement } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import { FaHome } from "react-icons/fa";
 import { HiViewGridAdd } from "react-icons/hi";
 import { IoIosToday } from "react-icons/io";
@@ -14,7 +14,7 @@ const MobileHeader: FC = () => {
     icon: ReactElement;
     path: string;
   }
-
+  const pathname = usePathname();
   const links: linkType[] = [
     {
       icon: <FaHome className=" flex justify-center items-center " />,
@@ -43,15 +43,17 @@ const MobileHeader: FC = () => {
       path: "/purps/add",
     },
   ];
-  const pathname = usePathname();
+
   return (
-    <nav className=" bg-white w-screen fixed xl:hidden bottom-0 flex justify-between p-3">
+    <nav className=" bg-white w-screen justify-between fixed xl:hidden bottom-0 flex p-1">
       {links.map((link) => (
         <Link
           href={link.path}
           className={` ${
-            pathname === link.path ? " text-orange-500" : "text-black"
-          } text-3xl`}
+            pathname === link.path.split("?")[0]
+              ? " text-orange-500 border-orange-500"
+              : " text-gray-400 border-transparent"
+          } text-2xl border-2 rounded-xl p-2`}
         >
           {link.icon}
         </Link>

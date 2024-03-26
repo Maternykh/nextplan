@@ -30,10 +30,10 @@ export const getDays = async (
     console.log(err);
   }
 };
-export const getCalendar = async () => {
+export const getCalendar = async (userOwner: string | null) => {
   try {
     connectToDB();
-    const days = await Day.find();
+    const days = await Day.find({ owner: userOwner });
     return days;
   } catch (err) {
     console.log(err);

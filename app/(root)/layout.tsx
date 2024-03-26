@@ -29,7 +29,7 @@ export default function RootLayout({
               " bg-gray-300 min-h-screen  xl:px-16 xl:py-20"
             }
           >
-            <section className=" bg-gray-200 xl:rounded-3xl p-3 w-full">
+            <section className=" bg-gray-200 xl:rounded-3xl p-3 w-full mb-12 ">
               <Header />
               {children}
               <Toaster />
