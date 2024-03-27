@@ -56,7 +56,9 @@ const NavBar: React.FC = () => {
         <Link href={lin.path} key={index}>
           <div
             className={`${
-              pathname === lin.path ? " text-orange-500" : "text-slate-800"
+              pathname === lin.path.split("?")[0]
+                ? " text-orange-500"
+                : "text-slate-800"
             } flex justify-center xl:justify-normal my-2 text-lg items-center`}
           >
             <div className=" flex justify-center items-center text-xl mr-1">
