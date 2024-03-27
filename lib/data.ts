@@ -80,10 +80,10 @@ export const getPurp = async (id: string) => {
   }
 };
 
-export const getPurps = async () => {
+export const getPurps = async (userOwner: string | null) => {
   try {
     connectToDB();
-    const purps = await Purp.find();
+    const purps = await Purp.find({ owner: userOwner });
     return purps;
   } catch (err) {
     console.log(err);

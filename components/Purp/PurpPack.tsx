@@ -1,11 +1,13 @@
 import { purpTypeWithId } from "@/Types/DayType";
 import { getPurps } from "@/lib/data";
+import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 
 const PurpPack: FC = async () => {
-  const purps: purpTypeWithId[] | undefined = await getPurps();
+  const { userId }: { userId: string | null } = auth();
+  const purps: purpTypeWithId[] | undefined = await getPurps(userId);
   if (purps?.length === 0) {
     return (
       <section className=" bg-white rounded-xl mt-2 p-2">
