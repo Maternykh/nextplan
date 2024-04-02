@@ -71,7 +71,7 @@ const PatternForm: FC = () => {
       monthAndYears,
       pattern,
     });
-    router.push("/patterns");
+    router.push("/pattern");
   };
   return (
     <>
