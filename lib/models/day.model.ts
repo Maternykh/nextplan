@@ -4,11 +4,11 @@ const daySchema = new mongoose.Schema(
     tascName: {
       type: String,
       require: true,
-      unique: true,
     },
     dayName: {
       type: String,
       require: true,
+      unique: true,
     },
     events: [
       {
