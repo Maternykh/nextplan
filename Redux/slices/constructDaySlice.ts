@@ -54,6 +54,14 @@ export const constructDaySlice = createSlice({
     deleteEvents: (state, actions: PayloadAction<number>) => {
       state.events = state.events.filter((obj) => obj.id !== actions.payload);
     },
+    clearEvents: (state) => {
+      state.events = [];
+    },
+    upheavalEvents: (state) => {
+      state.events.map((el) => {
+        el.isCompleted = !el.isCompleted;
+      });
+    },
     setNote: (state, actions: PayloadAction<string>) => {
       state.note = actions.payload;
     },
@@ -77,6 +85,8 @@ export const constructDaySlice = createSlice({
 });
 
 export const {
+  upheavalEvents,
+  clearEvents,
   setTascName,
   setDayName,
   setMonthAndYears,
