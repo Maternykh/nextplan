@@ -1,4 +1,9 @@
-import { addEvents, deleteEvents } from "@/Redux/slices/constructDaySlice";
+import {
+  addEvents,
+  clearEvents,
+  deleteEvents,
+  upheavalEvents,
+} from "@/Redux/slices/constructDaySlice";
 import { RootState } from "@/Redux/store";
 import { eventType } from "@/Types/DayType";
 import { useAppDispatch, useAppSelector } from "@/Types/Redux";
@@ -6,7 +11,8 @@ import React, { FC, useState } from "react";
 import { MdCheck } from "react-icons/md";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-
+import { RxUpdate } from "react-icons/rx";
+import { RiDeleteBin2Line } from "react-icons/ri";
 const EventsConstruct: FC = () => {
   const { events, color } = useAppSelector((state: RootState) => state.addDay);
   const dispatch = useAppDispatch();
@@ -101,21 +107,39 @@ const EventsConstruct: FC = () => {
             {isCompleted && <MdCheck className={` text-white text-2xl `} />}
           </button>
         </div>
-        <div className=" flex">
-          <Button
-            variant="destructive"
-            onClick={() => dispatch(deleteEvents(idVal))}
-            className="  mr-2 p-2  w-1/2 mt-2 "
-          >
-            Delete Event
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={() => OnClickAdd()}
-            className=" p-2  w-1/2  mt-2"
-          >
-            Add Event
-          </Button>
+        <div className=" xl:flex">
+          <div className=" xl:w-4/5 w-full flex">
+            <Button
+              variant="destructive"
+              onClick={() => dispatch(deleteEvents(idVal))}
+              className="  mr-2 p-2 w-full mt-2 "
+            >
+              Delete Event
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => OnClickAdd()}
+              className=" p-2 w-full  mt-2"
+            >
+              Add Event
+            </Button>
+          </div>
+          <div className=" flex xl:w-1/5 w-full xl:mx-2">
+            <button
+              onClick={() => dispatch(upheavalEvents())}
+              className={` p-2 text-xl flex justify-center items-center text-white w-1/2 ${
+                "bg-" + color + "-400"
+              } mt-2 rounded-md`}
+            >
+              <RxUpdate />
+            </button>
+            <button
+              onClick={() => dispatch(clearEvents())}
+              className=" p-2 bg-red-500 rounded-md w-1/2 ml-2 text-xl flex justify-center items-center mt-2 text-white"
+            >
+              <RiDeleteBin2Line />
+            </button>
+          </div>
         </div>
       </section>
     </section>
