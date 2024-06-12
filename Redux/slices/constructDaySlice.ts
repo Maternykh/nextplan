@@ -48,8 +48,19 @@ export const constructDaySlice = createSlice({
         (obj) => obj.id !== actions.payload
       );
     },
-    addEvents: (state, actions: PayloadAction<eventType>) => {
-      state.events.push(actions.payload);
+    addEvents: (
+      state,
+      actions: PayloadAction<{ event: eventType; index: string }>
+    ) => {
+      if (actions.payload.index === "") {
+        state.events.push(actions.payload.event);
+      } else {
+        state.events.splice(
+          Number(actions.payload.index),
+          0,
+          actions.payload.event
+        );
+      }
     },
     deleteEvents: (state, actions: PayloadAction<number>) => {
       state.events = state.events.filter((obj) => obj.id !== actions.payload);
