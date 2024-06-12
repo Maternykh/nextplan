@@ -16,6 +16,7 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 const EventsConstruct: FC = () => {
   const { events, color } = useAppSelector((state: RootState) => state.addDay);
   const dispatch = useAppDispatch();
+  const [indexValue, setIndexValue] = useState<string>("");
   const [idVal, setIdVal] = useState<number>(0);
   const [timeActVal, setTimeActVal] = useState<string>("");
   const [actVal, setActVal] = useState<string>("");
@@ -29,7 +30,7 @@ const EventsConstruct: FC = () => {
         timeAct: timeActVal,
         isCompleted: isCompleted,
       };
-      dispatch(addEvents(newEvent));
+      dispatch(addEvents({ event: newEvent, index: indexValue }));
     }
   };
   const OnClickEvent = ({ id, timeAct, act, isCompleted }: eventType) => {
@@ -89,14 +90,20 @@ const EventsConstruct: FC = () => {
             onChange={(e) => setTimeActVal(e.target.value)}
             type="text"
             placeholder="Enter time"
-            className=" mr-2 xl:w-80 w-32"
+            className=" mr-2 xl:w-64 w-24"
           />
           <Input
             value={actVal}
             onChange={(e) => setActVal(e.target.value)}
             type="text"
             placeholder="Enter value event"
-            className=" mr-2 xl:w-72 w-36"
+            className=" mr-2 xl:w-72 w-32"
+          />
+          <Input
+            value={indexValue}
+            onChange={(e) => setIndexValue(e.target.value)}
+            type="text"
+            className=" mr-2 w-10 "
           />
           <button
             onClick={() => setIsCompleted(!isCompleted)}
